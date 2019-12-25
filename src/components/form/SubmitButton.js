@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Button extends Component {
     render() {
         return (
-            <div></div>
+            <button className={this.constructor.name} type='button'>Remind Me</button>
         )
     }
 }
