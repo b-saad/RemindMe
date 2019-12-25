@@ -7,3 +7,5 @@ class ReminderForm extends Component {
         )
     }
 }
+
+export default ReminderForm;
