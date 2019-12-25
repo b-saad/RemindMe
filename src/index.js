@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import './css/index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Message extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 id='IDlol'>Hello World</h1>
+                <p>paragraph tag</p>
+            </div>
+        )
+    }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render (
+    <Message />,
+    document.getElementById('root')
+)
