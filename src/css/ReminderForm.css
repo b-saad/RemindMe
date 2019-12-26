@@ -7,3 +7,12 @@
 p {
     margin: 0;
 }
+
+.inputError {
+    border-width: 1px;
+    border-color: red;
+}
+
+.errorLabel {
+    color: red;
+}
