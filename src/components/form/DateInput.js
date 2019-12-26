@@ -4,8 +4,9 @@ class DateInput extends Component {
     render() {
         return (
             <div className={this.constructor.name}>
-                Date: 
+                <p className='fieldLabel'>Date: </p>
                 <input type='date'></input>
+                <p className='errorLabel'>Please choose a date in the future</p>
             </div>
         )
     }
