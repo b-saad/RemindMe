@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/Info.css';
 
 import LargeTitle from './LargeTitle';
 import DescriptionBox from './DescriptionBox';

@@ -8,8 +8,12 @@ class App extends Component{
   render() {
     return (
       <div>
-        <Info />
-        <ReminderForm />
+        <div className='InfoContainer'>
+          <Info />
+        </div>
+        <div className='ReminderFormContainer'>
+          <ReminderForm />
+        </div>
       </div>
     )
    }
