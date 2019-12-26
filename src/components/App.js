@@ -7,11 +7,11 @@ import ReminderForm from './form/ReminderForm'
 class App extends Component{
   render() {
     return (
-      <div>
-        <div className='InfoContainer'>
+      <div className='main-flex-container'>
+        <div className='InfoContainer main-flex-item'>
           <Info />
         </div>
-        <div className='ReminderFormContainer'>
+        <div className='ReminderFormContainer main-flex-item'>
           <ReminderForm />
         </div>
       </div>

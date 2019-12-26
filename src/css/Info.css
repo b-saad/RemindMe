@@ -5,6 +5,8 @@ h1 {
 }
 
 .Info {
-    background-color: rgba(255, 255, 255, 0.05);
-    z-index: 6dp;
+    /* background-color: rgba(255, 255, 255, 0.05); */
+    background-color: red;
+    width: 80%;
+    margin: 0 auto;
 }
