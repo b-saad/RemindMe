@@ -3,14 +3,8 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/high-res.css'
 
 class PhoneInputField extends Component {
-    constructor () {
-        super();
-        this.state = {
-            phone: ''
-        };
-    }
-
     render() {
+        const { phone, handlePhoneChange } = this.props;
         return (
             <div className={this.constructor.name}>
                 <p className='fieldLabel'>Phone Number: </p>
@@ -18,8 +12,8 @@ class PhoneInputField extends Component {
                     className='PhoneInput'
                     country={'us'}
                     enableAreaCodes={false}
-                    value={this.state.phone}
-                    onChange={phone => this.setState({ phone })}
+                    value={phone}
+                    onChange={handlePhoneChange}
                 />
             </div>
         )

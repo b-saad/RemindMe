@@ -16,28 +16,23 @@ function getCurrentTime() {
     return `${hour}:${min}`;
 }
 class TimeInput extends Component {
-    constructor () {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            time: getCurrentTime(),
             errorMessage: VALID_TIME_ERROR,
             error: false
         };
-        this.handleTimeChange = this.handleTimeChange.bind(this);
     }
 
-    handleTimeChange(e) {
-        this.setState({ time : e.target.value });
-    }
-
-    render() {
+    render() {       
+        const { time, handleTimeChange } = this.props;
         return (
             <div className={this.constructor.name}>
                 <p className='fieldLabel'>Time: </p>
                 <input  type='time'
                         className={this.state.error ? 'inputError' : ''}
-                        value={this.state.time}
-                        onChange={this.handleTimeChange}>
+                        value={time}
+                        onChange={handleTimeChange}>
                 </input>
                 <p className='errorLabel' hidden={!this.state.error}>{this.state.errorMessage}</p>
             </div>
@@ -45,4 +40,7 @@ class TimeInput extends Component {
     }
 }
 
-export default TimeInput;
+export {
+    TimeInput,
+    getCurrentTime
+} 
