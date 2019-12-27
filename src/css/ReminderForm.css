@@ -63,6 +63,6 @@ input:focus, textarea:focus {
     color: red;
     width: 100%;
     font-family: inherit;
-    font-size: calc(14px + 0.75vw);
+    font-size: calc(10px + 0.50vw);
 }
 
