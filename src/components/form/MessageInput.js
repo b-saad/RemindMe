@@ -19,7 +19,7 @@ class MessageInput extends Component {
         const length = e.target.value.length;
         let errorMessage = '';
         let error = false;
-        if (length == 0) {
+        if (length === 0) {
             errorMessage = NO_MESSAGE_ERROR;
             error = true;
         } else if (length > CHARACTER_LIMIT) {
