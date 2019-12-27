@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import '../../css/SubmitButton.css';
 
-class Button extends Component {
+class SubmitButton extends Component {
     render() {
         return (
-            <button className={this.constructor.name} type='button'>Remind Me</button>
+            <button className={this.constructor.name} type='button'>REMIND ME</button>
         )
     }
 }
 
-export default Button;
+export default SubmitButton;

@@ -1,11 +1,47 @@
 .ReminderForm {
     margin: 0 auto;
+    padding: 20px;
     width: 80%;
     background-color: blueviolet;
 }
 
 p {
     margin: 0;
+}
+
+input, textarea {
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+input {
+    text-align: center;
+    height: 40px;
+    font-size: 25px;
+}
+
+textarea {
+    height: 300px;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+.fieldLabel, .characterCount {
+    font-family: 'Merriweather';
+    font-size: clamp(16px, 5vw, 20px);;
+    margin-top: 8px;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.characterCount {
+    float: right;
 }
 
 .inputError {
@@ -15,4 +51,14 @@ p {
 
 .errorLabel {
     color: red;
+    width: 100%;
+    font-family: inherit;
+    font-size: 20px;
 }
+
+@media (max-width: 450px) {
+    .ReminderForm {
+        padding: 0px;
+        width: 90%;
+    }
+  }

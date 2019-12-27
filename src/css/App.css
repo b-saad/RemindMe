@@ -9,3 +9,15 @@
   flex: 1 1 0;
   margin: auto;
 }
+
+@media (max-width: 900px) {
+  .main-flex-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .main-flex-item {
+    flex: 1 0 auto;
+    width: 100vw;
+    margin-bottom: 0;
+  }
+}
