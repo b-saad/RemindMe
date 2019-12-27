@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const VALID_DATE_ERROR = 'Please choose a date in the future';
+const VALID_DATE_ERROR = 'Please choose a date in the future - YYYY-MM-DD';
 
 function formatDate(date) {
     var d = new Date(date),

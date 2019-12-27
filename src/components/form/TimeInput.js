@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const VALID_TIME_ERROR = 'Please choose a valid time';
+const VALID_TIME_ERROR = 'Please choose a valid time - 24h format - HH:MM';
 
 /* Returns 24 hour time as HH:MM*/
 function getCurrentTime() {
