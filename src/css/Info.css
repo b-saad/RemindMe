@@ -1,12 +1,29 @@
-h1 {
-    margin: 0;
-    font-size: 3em;
-    font-family: 'Merriweather', 'Times New Roman';
-}
-
 .Info {
     /* background-color: rgba(255, 255, 255, 0.05); */
     background-color: red;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.LargeTitle {
+    margin: 0 0 10px 0;
+    font-size: calc(30px + 3.5vw);
+    font-family: 'Merriweather', 'Times New Roman';
+    text-align: center;
+}
+
+.DescriptionBox {
+    font-size: calc(14px + 0.75vw);
+}
+
+@media (max-width: 450px) {
+    .Info {
+        margin-bottom: 10px;
+    }
+
+    .LargeTitle {
+        margin: 0;
+    }
 }

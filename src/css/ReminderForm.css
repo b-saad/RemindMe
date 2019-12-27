@@ -1,7 +1,7 @@
 .ReminderForm {
     margin: 0 auto;
     padding: 20px;
-    width: 80%;
+    width: 90%;
     background-color: blueviolet;
 }
 
@@ -19,13 +19,13 @@ input, textarea {
 input {
     text-align: center;
     height: 40px;
-    font-size: 25px;
+    font-size: calc(14px + 0.75vw);
 }
 
 textarea {
-    height: 300px;
+    height: calc(100px + 5vh);
     font-family: inherit;
-    font-size: 20px;
+    font-size: calc(14px + 0.75vw);
 }
 
 input:focus, textarea:focus {
@@ -34,7 +34,7 @@ input:focus, textarea:focus {
 
 .fieldLabel, .characterCount {
     font-family: 'Merriweather';
-    font-size: clamp(16px, 5vw, 20px);;
+    font-size: calc(14px + 0.75vw);
     margin-top: 8px;
     margin-bottom: 3px;
     display: inline-block;
@@ -53,12 +53,6 @@ input:focus, textarea:focus {
     color: red;
     width: 100%;
     font-family: inherit;
-    font-size: 20px;
+    font-size: calc(14px + 0.75vw);
 }
 
-@media (max-width: 450px) {
-    .ReminderForm {
-        padding: 0px;
-        width: 90%;
-    }
-  }
