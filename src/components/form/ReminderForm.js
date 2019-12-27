@@ -43,7 +43,6 @@ class ReminderForm extends Component {
     handleTimeChange(e) {
         var error = false;
         if (isToday(this.state.date)) {
-            // Check if the new time is in the future
             error = !validFutureTime(e.target.value);
         }
         this.setState({

@@ -29,17 +29,14 @@ function validDate(date) {
     const today = formatDate(new Date());
     const todayYear = Number(today.substring(0, 4));
     const todayMonth = Number(today.substring(5, 7));
-    const todayDay = Number(today.substring(9, 11));
-    const dateYear = Number(today.substring(0, 4));
-    const dateMonth = Number(today.substring(5, 7));
-    const dateDay = Number(today.substring(9, 11));
+    const todayDay = Number(today.substring(8, 10));
+    const dateYear = Number(date.substring(0, 4));
+    const dateMonth = Number(date.substring(5, 7));
+    const dateDay = Number(date.substring(8, 10));
     if (dateYear < todayYear) return false;
     if (dateMonth < todayMonth) return false;
     if (dateMonth === todayMonth) {
-        if (dateDay >= todayDay) {
-            return true;
-        }
-        return false;
+        return dateDay >= todayDay;
     }
     return true;
 }
