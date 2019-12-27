@@ -4,7 +4,7 @@ import '../../css/SubmitButton.css';
 class SubmitButton extends Component {
     render() {
         return (
-            <button className={this.constructor.name} type='button'>REMIND ME</button>
+            <button className={this.constructor.name} type='button'>Remind Me</button>
         )
     }
 }

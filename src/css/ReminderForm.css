@@ -17,7 +17,7 @@ p {
     margin: 0;
 }
 
-input, textarea {
+input, textarea, #phone-form-control {
     -webkit-appearance: none;
     width: 100%;
     border: 1px solid #dfe1e5;
@@ -25,7 +25,7 @@ input, textarea {
     font-family: inherit;
 }
 
-input {
+input, #phone-form-control {
     text-align: center;
     height: 40px;
     font-size: calc(14px + 0.75vw);
@@ -43,7 +43,7 @@ input:focus, textarea:focus {
 }
 
 .fieldLabel, .characterCount {
-    font-family: 'Merriweather';
+    /* font-family: 'Merriweather'; */
     font-size: calc(14px + 0.75vw);
     margin-top: 13px;
     margin-bottom: 4px;
