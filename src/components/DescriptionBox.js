@@ -4,7 +4,9 @@ class DescriptionBox extends Component {
     render() {
         return (
             <p className={this.constructor.name}>
-                Never miss another reminder - send yourself a text reminder<br></br>
+                Never miss another reminder - send yourself a text reminder
+                <br></br>
+                <br></br>
                 How to use:<br></br>
                 - Enter your phone number <br></br>
                 - Set the date and time  <br></br>

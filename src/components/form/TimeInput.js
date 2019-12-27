@@ -11,7 +11,7 @@ function getCurrentTime() {
         hour = `0${hour}`;
     }
     if (min <= 9) {
-        min = `0{min}`;
+        min = `0${min}`;
     }
     return `${hour}:${min}`;
 }

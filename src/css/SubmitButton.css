@@ -7,8 +7,7 @@
     background-color: white;
     font-family: inherit;
     font-size: calc(14px + 0.75vw);
-    border-radius: 1px;
-    border-color: black;
+    border: 1px solid #dfe1e5;
     border-radius: 5px;
     margin-top: 10px;
 }
