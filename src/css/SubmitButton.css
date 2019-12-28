@@ -15,3 +15,7 @@
 .SubmitButton:focus {
     outline: none;
 }
+ .SubmitButton:hover {
+    background-color: black;
+    color: white;
+ }
