@@ -16,7 +16,7 @@ class PhoneInputField extends Component {
                     value={phone}
                     onChange={handlePhoneChange}
                 />
-                <p className='errorLabel' hidden={!error}>${VALID_PHONE_ERROR}</p>
+                <p className='errorLabel' hidden={!error}>{VALID_PHONE_ERROR}</p>
             </div>
         )
     }

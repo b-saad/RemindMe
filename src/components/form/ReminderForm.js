@@ -116,10 +116,10 @@ class ReminderForm extends Component {
     }
 
     render() {
-        const { phone, date, dateError, time, timeError, message, messageCharLimit, messageError, messageErrorMessage } = this.state;
+        const { phone, phoneError, date, dateError, time, timeError, message, messageCharLimit, messageError, messageErrorMessage } = this.state;
         return (
             <form className={this.constructor.name}>
-                <PhoneInputField phone={phone} handlePhoneChange={this.handlePhoneChange}/>
+                <PhoneInputField phone={phone} error={phoneError} handlePhoneChange={this.handlePhoneChange}/>
                 <DateInput date={date} error={dateError} handleDateChange={this.handleDateChange} />
                 <TimeInput time={time} error={timeError} handleTimeChange={this.handleTimeChange}/>
                 <MessageInput 
