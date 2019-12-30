@@ -21,12 +21,14 @@ class ReminderForm extends Component {
             time: getCurrentTime(),
             message: '',
             messageCharLimit: CHARACTER_LIMIT,
+            phoneError: false,
             dateError: false,
             timeError: false,
             messageError: false,
             messageErrorMessage: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePhoneChange = this.handlePhoneChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleMessageChange = this.handleMessageChange.bind(this);
@@ -38,10 +40,14 @@ class ReminderForm extends Component {
         const dateError = !validDate(this.state.date);
         const timeError = !dateError && isToday(this.state.date) && !validFutureTime(this.state.time);
         const messageError = this.state.message === '' || this.state.messageError;
+        const messageErrorMessage = messageError ? NO_MESSAGE_ERROR : this.state.messageErrorMessage;
         if (phoneError || dateError || timeError || messageError) {
             this.setState({
+                phoneError: phoneError,
                 dateError: dateError,
-                timeError: timeError
+                timeError: timeError,
+                messageError: messageError,
+                messageErrorMessage: messageErrorMessage
             });
             return;
         }
@@ -52,7 +58,22 @@ class ReminderForm extends Component {
             "message": this.state.message,
             "date": date
         };
+        this.setState({
+            phoneError: phoneError,
+            dateError: dateError,
+            timeError: timeError,
+            messageError: messageError,
+            messageErrorMessage: messageErrorMessage
+        });
         console.log(reqBody);
+    }
+
+    handlePhoneChange(phone) {
+        const error = this.state.phone === '';
+        this.setState({
+            phone: phone,
+            phoneError: error
+        });
     }
 
     handleDateChange(e) {
@@ -98,7 +119,7 @@ class ReminderForm extends Component {
         const { phone, date, dateError, time, timeError, message, messageCharLimit, messageError, messageErrorMessage } = this.state;
         return (
             <form className={this.constructor.name}>
-                <PhoneInputField phone={phone} handlePhoneChange={phone => this.setState({phone: phone})}/>
+                <PhoneInputField phone={phone} handlePhoneChange={this.handlePhoneChange}/>
                 <DateInput date={date} error={dateError} handleDateChange={this.handleDateChange} />
                 <TimeInput time={time} error={timeError} handleTimeChange={this.handleTimeChange}/>
                 <MessageInput 
