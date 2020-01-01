@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../css/StatusBox.css';
 
 class StatusBox extends Component {
     render() {

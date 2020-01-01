@@ -13,8 +13,9 @@ import StatusBox from './StatusBox';
 const CHARACTER_LIMIT = 160;
 const NO_MESSAGE_ERROR = 'Please enter a message to be sent';
 const EXCEED_CHARACTER_LIMIT = `Your message must be under ${CHARACTER_LIMIT} characters`
-const SUCCESS_STATUS_BOX_STYLE = 'status_success';
-const ERROR_STATUS_BOX_STYLE = 'status_error';
+const ERROR_STATUS_BOX_MESSAGE = 'oops something went wrong';
+const STATUS_BOX_STYLE_SUCCESS = 'status_success';
+const STATUS_BOX_STYLE_ERROR = 'status_error';
 
 class ReminderForm extends Component {
     constructor () {
@@ -30,8 +31,8 @@ class ReminderForm extends Component {
             timeError: false,
             messageError: false,
             messageErrorMessage: '',
-            statusMessage: '',
-            statusStyle: ''
+            statusMessage: 'yay your remidner will be sent to you on wednesday',
+            statusStyle: STATUS_BOX_STYLE_ERROR
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
@@ -140,7 +141,7 @@ class ReminderForm extends Component {
                     />
                     <SubmitButton handleClick={this.handleSubmit}/>
                 </form>
-                <StatusBox text={statusMessage} statusStyle={statusStyle} hidden={statusMessage === ''}/>
+                <StatusBox text={statusMessage} style={statusStyle} hidden={statusMessage === ''}/>
             </div>
         )
     }
