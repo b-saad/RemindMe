@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { formatDate, isToday, validDate } from '../../util/DateUtil';
 import { getCurrentTime, validFutureTime } from '../../util/TimeUtil';
+import { createReminder } from '../../util/ReminderUtil';
 import '../../css/ReminderForm.css';
 
 import PhoneInputField from './PhoneInputField';
@@ -13,7 +14,7 @@ import StatusBox from './StatusBox';
 const CHARACTER_LIMIT = 160;
 const NO_MESSAGE_ERROR = 'Please enter a message to be sent';
 const EXCEED_CHARACTER_LIMIT = `Your message must be under ${CHARACTER_LIMIT} characters`
-const ERROR_STATUS_BOX_MESSAGE = 'oops something went wrong';
+const STATUS_MESSAGE_ERROR = 'oops something went wrong';
 const STATUS_BOX_STYLE_SUCCESS = 'status_success';
 const STATUS_BOX_STYLE_ERROR = 'status_error';
 
@@ -31,8 +32,8 @@ class ReminderForm extends Component {
             timeError: false,
             messageError: false,
             messageErrorMessage: '',
-            statusMessage: 'yay your remidner will be sent to you on wednesday',
-            statusStyle: STATUS_BOX_STYLE_ERROR
+            statusMessage: '',
+            statusStyle: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
@@ -54,25 +55,26 @@ class ReminderForm extends Component {
                 dateError: dateError,
                 timeError: timeError,
                 messageError: messageError,
-                messageErrorMessage: messageErrorMessage
+                messageErrorMessage: messageErrorMessage,
+                statusMessage: '',
+                statusStyle: ''
             });
             return;
         }
         const date = new Date(`${this.state.date}T${this.state.time}:00`).toISOString();
         const phone = this.state.phone.replace(/[()]/g, '').replace(/\s/g, '').replace(/[-]/g, '');
-        const reqBody = {
-            "phoneNumber" : phone,
-            "message": this.state.message,
-            "date": date
-        };
-        this.setState({
-            phoneError: phoneError,
-            dateError: dateError,
-            timeError: timeError,
-            messageError: messageError,
-            messageErrorMessage: messageErrorMessage
+        createReminder(phone, this.state.message, date, (error) => {
+            const status_message_success = `Your reminder will be sent you on ${this.state.date} at ${this.state.time}`;
+            this.setState({
+                phoneError: phoneError,
+                dateError: dateError,
+                timeError: timeError,
+                messageError: messageError,
+                messageErrorMessage: messageErrorMessage,
+                statusMessage: error === null ? status_message_success : STATUS_MESSAGE_ERROR,
+                statusStyle: error === null ? STATUS_BOX_STYLE_SUCCESS : STATUS_BOX_STYLE_ERROR
+            });
         });
-        console.log(reqBody);
     }
 
     handlePhoneChange(phone) {
@@ -126,6 +128,7 @@ class ReminderForm extends Component {
         const { phone, phoneError, date, dateError, time, timeError } = this.state;
         const { message, messageCharLimit, messageError, messageErrorMessage } = this.state
         const { statusMessage, statusStyle } = this.state;
+        const statusBox = statusMessage !== '' ? <StatusBox text={statusMessage} style={statusStyle}/> : null;
         return (
             <div>
                 <form className={this.constructor.name}>
@@ -141,7 +144,7 @@ class ReminderForm extends Component {
                     />
                     <SubmitButton handleClick={this.handleSubmit}/>
                 </form>
-                <StatusBox text={statusMessage} style={statusStyle} hidden={statusMessage === ''}/>
+                {statusBox}
             </div>
         )
     }
