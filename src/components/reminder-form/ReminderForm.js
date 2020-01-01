@@ -8,10 +8,14 @@ import DateInput from './DateInput';
 import TimeInput from './TimeInput';
 import MessageInput from './MessageInput'
 import SubmitButton from './SubmitButton'
+import StatusBox from './StatusBox';
 
 const CHARACTER_LIMIT = 160;
 const NO_MESSAGE_ERROR = 'Please enter a message to be sent';
 const EXCEED_CHARACTER_LIMIT = `Your message must be under ${CHARACTER_LIMIT} characters`
+const SUCCESS_STATUS_BOX_STYLE = 'status_success';
+const ERROR_STATUS_BOX_STYLE = 'status_error';
+
 class ReminderForm extends Component {
     constructor () {
         super();
@@ -25,7 +29,9 @@ class ReminderForm extends Component {
             dateError: false,
             timeError: false,
             messageError: false,
-            messageErrorMessage: ''
+            messageErrorMessage: '',
+            statusMessage: '',
+            statusStyle: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
@@ -116,21 +122,26 @@ class ReminderForm extends Component {
     }
 
     render() {
-        const { phone, phoneError, date, dateError, time, timeError, message, messageCharLimit, messageError, messageErrorMessage } = this.state;
+        const { phone, phoneError, date, dateError, time, timeError } = this.state;
+        const { message, messageCharLimit, messageError, messageErrorMessage } = this.state
+        const { statusMessage, statusStyle } = this.state;
         return (
-            <form className={this.constructor.name}>
-                <PhoneInputField phone={phone} error={phoneError} handlePhoneChange={this.handlePhoneChange}/>
-                <DateInput date={date} error={dateError} handleDateChange={this.handleDateChange} />
-                <TimeInput time={time} error={timeError} handleTimeChange={this.handleTimeChange}/>
-                <MessageInput 
-                    message={message} 
-                    charLimit={messageCharLimit}
-                    error={messageError} 
-                    errorMessage={messageErrorMessage} 
-                    handleMessageChange={this.handleMessageChange}
-                />
-                <SubmitButton handleClick={this.handleSubmit}/>
-            </form>
+            <div>
+                <form className={this.constructor.name}>
+                    <PhoneInputField phone={phone} error={phoneError} handlePhoneChange={this.handlePhoneChange}/>
+                    <DateInput date={date} error={dateError} handleDateChange={this.handleDateChange} />
+                    <TimeInput time={time} error={timeError} handleTimeChange={this.handleTimeChange}/>
+                    <MessageInput 
+                        message={message} 
+                        charLimit={messageCharLimit}
+                        error={messageError} 
+                        errorMessage={messageErrorMessage} 
+                        handleMessageChange={this.handleMessageChange}
+                    />
+                    <SubmitButton handleClick={this.handleSubmit}/>
+                </form>
+                <StatusBox text={statusMessage} statusStyle={statusStyle} hidden={statusMessage === ''}/>
+            </div>
         )
     }
 }
