@@ -1,3 +1,5 @@
+# RemindMe
+
 A website to send yourself text reminders.<br />
 Backend [here](https://github.com/b-saad/RemindMe-backend)
 
