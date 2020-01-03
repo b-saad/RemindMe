@@ -10,10 +10,12 @@
     font-size: calc(30px + 3.5vw);
     font-family: 'Merriweather', 'Times New Roman';
     text-align: center;
+    color: white;
 }
 
 .DescriptionBox {
-    font-size: calc(14px + 0.75vw);
+    font-size: calc(18px + 0.75vw);
+    color: white;
 }
 
 @media (max-width: 450px) {

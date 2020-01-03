@@ -4,18 +4,22 @@
     appearance: none;
     width: 100%;
     height: 40px;
-    background-color: white;
+    color: black;
     font-family: inherit;
     font-size: calc(14px + 0.75vw);
     border: 1px solid #dfe1e5;
     border-radius: 5px;
     margin-top: 10px;
+    background: white;
+
 }
 
 .SubmitButton:focus {
     outline: none;
 }
  .SubmitButton:hover {
-    background-color: black;
+    background: #f12711; /* fallback for old browsers */
+    background: -webkit-linear-gradient(151.32deg, #f12711, #f5af19); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(151.32deg, #f12711, #f5af19); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
  }

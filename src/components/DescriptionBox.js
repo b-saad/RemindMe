@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class DescriptionBox extends Component {
     render() {
         return (
-            <p className={this.constructor.name}>
+            <p className='DescriptionBox'>
                 Never miss another reminder - send yourself a text reminder
                 <br></br>
                 <br></br>

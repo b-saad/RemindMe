@@ -7,8 +7,9 @@ import DescriptionBox from './DescriptionBox';
 class Info extends Component {
     render() {
         return (
-            <div className={this.constructor.name}>
+            <div className='Info'>
                 <LargeTitle />
+                <br></br>
                 <DescriptionBox />
             </div>
         )

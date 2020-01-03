@@ -131,7 +131,7 @@ class ReminderForm extends Component {
         const statusBox = statusMessage !== '' ? <StatusBox text={statusMessage} style={statusStyle}/> : null;
         return (
             <div>
-                <form className={this.constructor.name}>
+                <form className='ReminderForm'>
                     <PhoneInputField phone={phone} error={phoneError} handlePhoneChange={this.handlePhoneChange}/>
                     <DateInput date={date} error={dateError} handleDateChange={this.handleDateChange} />
                     <TimeInput time={time} error={timeError} handleTimeChange={this.handleTimeChange}/>

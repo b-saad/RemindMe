@@ -13,7 +13,7 @@ class TimeInput extends Component {
     render() {       
         const { time, error, handleTimeChange } = this.props;
         return (
-            <div className={this.constructor.name}>
+            <div className='TimeInput'>
                 <p className='fieldLabel'>Time: </p>
                 <input  type='time'
                         className={error ? 'inputError' : ''}

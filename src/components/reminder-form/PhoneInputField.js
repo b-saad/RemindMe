@@ -7,7 +7,7 @@ class PhoneInputField extends Component {
     render() {
         const { phone, error, handlePhoneChange } = this.props;
         return (
-            <div className={this.constructor.name}>
+            <div className='PhoneInputField'>
                 <p className='fieldLabel'>Phone Number: </p>
                 <PhoneInput
                     className='PhoneInput'

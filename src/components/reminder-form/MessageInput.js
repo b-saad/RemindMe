@@ -19,7 +19,7 @@ class MessageInput extends Component {
     render() {
         const { message, error, errorMessage } = this.props;
         return (
-            <div className={this.constructor.name }>
+            <div className='MessageInput'>
                 <p className='fieldLabel'>Enter your reminder below</p>
                 <p className='characterCount'>{`(${this.state.characterCount})`}</p>
                 <textarea className={error ? 'inputError' : ''} value={message} onChange={this.handleMessageChange}>

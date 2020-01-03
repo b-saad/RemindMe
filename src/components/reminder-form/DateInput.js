@@ -14,7 +14,7 @@ class DateInput extends Component {
     render() {
         const { date, handleDateChange, error } = this.props;
         return (
-            <div className={this.constructor.name}>
+            <div className='DateInput'>
                 <p className='fieldLabel'>Date: </p>
                 <input  type='date' 
                         min={formatDate(new Date())}
