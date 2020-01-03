@@ -13,10 +13,13 @@ async function createReminder(phoneNumber, message, date, callback) {
         "message": message,
         "date": date
     }
-    console.log(reqBody);
     const response = await fetch(reminder_endpoint, {
         method: 'POST',
-        body: reqBody
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reqBody)
     });
     const error = await response.status !== 200;
     // const error = null;
