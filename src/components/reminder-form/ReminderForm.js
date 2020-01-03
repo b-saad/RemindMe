@@ -64,7 +64,7 @@ class ReminderForm extends Component {
         const date = new Date(`${this.state.date}T${this.state.time}:00`).toISOString();
         const phone = this.state.phone.replace(/[()]/g, '').replace(/\s/g, '').replace(/[-]/g, '');
         createReminder(phone, this.state.message, date, (error) => {
-            const status_message_success = `Your reminder will be sent you on ${this.state.date} at ${this.state.time}`;
+            const status_message_success = `Your reminder will be sent to you on ${this.state.date} at ${this.state.time}`;
             this.setState({
                 phoneError: phoneError,
                 dateError: dateError,
