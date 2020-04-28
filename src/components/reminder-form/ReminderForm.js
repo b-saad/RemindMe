@@ -14,7 +14,6 @@ import StatusBox from './StatusBox';
 const CHARACTER_LIMIT = 160;
 const NO_MESSAGE_ERROR = 'Please enter a message to be sent';
 const EXCEED_CHARACTER_LIMIT = `Your message must be under ${CHARACTER_LIMIT} characters`
-const STATUS_MESSAGE_ERROR = 'oops something went wrong';
 const STATUS_BOX_STYLE_SUCCESS = 'status_success';
 const STATUS_BOX_STYLE_ERROR = 'status_error';
 
@@ -65,6 +64,7 @@ class ReminderForm extends Component {
         const phone = this.state.phone.replace(/[()]/g, '').replace(/\s/g, '').replace(/[-]/g, '');
         createReminder(phone, this.state.message, date, (error) => {
             const status_message_success = `Your reminder will be sent to you on ${this.state.date} at ${this.state.time}`;
+            const STATUS_MESSAGE_ERROR = error;
             this.setState({
                 phoneError: phoneError,
                 dateError: dateError,

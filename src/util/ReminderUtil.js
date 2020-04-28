@@ -21,9 +21,12 @@ async function createReminder(phoneNumber, message, date, callback) {
         },
         body: JSON.stringify(reqBody)
     });
-    const error = await response.status !== 200;
-    // const error = null;
-    return callback(error ? error : null);
+    const errorOccurred = await response.status !== 200;
+    var error = null
+    if (errorOccurred) {
+        error = response.text()
+    }
+    return callback(error);
 }
 
 export {
