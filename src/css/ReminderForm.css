@@ -31,6 +31,10 @@ input, #phone-form-control {
     font-size: calc(14px + 0.75vw);
 }
 
+input, .react-tel-input .form-control {
+    width: 100% !important;
+}
+
 textarea {
     height: calc(100px + 5vh);
     font-family: inherit;
