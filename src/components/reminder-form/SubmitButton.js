@@ -3,9 +3,12 @@ import '../../css/SubmitButton.css';
 
 class SubmitButton extends Component {
     render() {
-        const { handleClick } = this.props; 
+        const { handleClick, loading } = this.props; 
         return (
-            <button className='SubmitButton' type='button' onClick={handleClick}>Remind Me</button>
+            <button className='SubmitButton' type='button' onClick={handleClick}>
+                <div className="loader" hidden={!loading}></div> 
+                <div className="buttonText" hidden={loading}>Remind Me</div>
+            </button>
         )
     }
 }

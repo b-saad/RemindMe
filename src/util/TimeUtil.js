@@ -1,8 +1,17 @@
-/* Returns 24 hour time as HH:MM */
+/* Returns 24 hour time as HH:MM with 1 minute added on
+*/
 function getCurrentTime() {
     const today = new Date();
     var hour = today.getHours();
-    var min = today.getMinutes();
+    var min = today.getMinutes()+1;
+    if (min > 59) {
+        min = 0
+        hour += 1
+    }
+    if (hour > 23) {
+        hour = 0
+    }
+    if (min )
     if (hour <= 9) {
         hour = `0${hour}`;
     }
@@ -13,7 +22,7 @@ function getCurrentTime() {
 }
 
 /*
-* Checks if 'time' is a valid future time
+* Checks if 'time' is a valid future time (at least 2 mins in the future)
 * @param time: String
 * returns true time is valid
 */

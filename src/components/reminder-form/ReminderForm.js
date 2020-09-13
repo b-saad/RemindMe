@@ -26,6 +26,7 @@ class ReminderForm extends Component {
             time: getCurrentTime(),
             message: '',
             messageCharLimit: CHARACTER_LIMIT,
+            loading: false,
             phoneError: false,
             dateError: false,
             timeError: false,
@@ -60,8 +61,11 @@ class ReminderForm extends Component {
             });
             return;
         }
-        const date = new Date(`${this.state.date}T${this.state.time}:00`).toISOString();
+        var date = new Date(`${this.state.date}T${this.state.time}:00`);
+        date.setSeconds(date.getSeconds() - 10); // subtract 10 seconds from time to account for delays
+        date = Math.floor(date / 1000)   // Convert to unix time stamp
         const phone = this.state.phone.replace(/[()]/g, '').replace(/\s/g, '').replace(/[-]/g, '');
+        this.setState({ loading: true });
         createReminder(phone, this.state.message, date, (error) => {
             const status_message_success = `Your reminder will be sent to you on ${this.state.date} at ${this.state.time}`;
             const STATUS_MESSAGE_ERROR = error;
@@ -69,6 +73,7 @@ class ReminderForm extends Component {
                 phoneError: phoneError,
                 dateError: dateError,
                 timeError: timeError,
+                loading: false,
                 messageError: messageError,
                 messageErrorMessage: messageErrorMessage,
                 statusMessage: error === null ? status_message_success : STATUS_MESSAGE_ERROR,
@@ -126,7 +131,7 @@ class ReminderForm extends Component {
 
     render() {
         const { phone, phoneError, date, dateError, time, timeError } = this.state;
-        const { message, messageCharLimit, messageError, messageErrorMessage } = this.state
+        const { message, messageCharLimit, messageError, messageErrorMessage, loading } = this.state
         const { statusMessage, statusStyle } = this.state;
         const statusBox = statusMessage !== '' ? <StatusBox text={statusMessage} style={statusStyle}/> : null;
         return (
@@ -142,7 +147,7 @@ class ReminderForm extends Component {
                         errorMessage={messageErrorMessage} 
                         handleMessageChange={this.handleMessageChange}
                     />
-                    <SubmitButton handleClick={this.handleSubmit}/>
+                    <SubmitButton loading={loading} handleClick={this.handleSubmit}/>
                 </form>
                 {statusBox}
             </div>

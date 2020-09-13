@@ -1,32 +1,35 @@
-import { reminder_endpoint } from './config.json';
 
 /*
 * Creates a reminder by sending a post request to the backend
 * @param phoneNumber: String - E. 164 format, ex +19056623332
 * @param message: String 
-* @param date: String - UTC time YYYY-MM-DDThh:mm:ssZ
+* @param date: String - Unix timestamp
 * @param callback: (error) => {} to be called when request response is received
 */
 async function createReminder(phoneNumber, message, date, callback) {
+    // The reminder request body is needed to be sent from the postback to the lambda
+    const reminderReqBody = {
+        "phone_number" : phoneNumber,
+        "reminder": message
+    }
     const reqBody = {
-        "phoneNumber" : phoneNumber,
-        "message": message,
-        "date": date
+        "send_at": date,
+        "body_string": JSON.stringify(reminderReqBody)
     }
-    const response = await fetch(reminder_endpoint, {
+    console.log(reminderReqBody);
+    console.log(reqBody);
+    var error = null;
+    await fetch(`${process.env.REACT_APP_POSTBACKS_URL}`, {
         method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(reqBody)
-    });
-    const errorOccurred = await response.status !== 200;
-    var error = null
-    if (errorOccurred) {
-        error = response.text()
-    }
-    return callback(error);
+    }).then(function (response) {
+        const errorOccurred = !(response.status >= 200 && response.status <= 299);
+        error = errorOccurred ? "Something went wrong!" : null;
+	}).catch(function (err) {
+        console.error(err);
+        error = "Something went wrong!";
+	});
+    callback(error);
 }
 
 export {

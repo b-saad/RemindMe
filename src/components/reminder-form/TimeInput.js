@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const VALID_TIME_ERROR = 'Please choose a valid future time - HH:MM - 24h format';
+const VALID_TIME_ERROR = 'Please choose a valid future time (at least 2 min in the future) - HH:MM - 24h format';
 
 class TimeInput extends Component {
     constructor(props) {
