@@ -28,7 +28,7 @@ input, textarea, #phone-form-control {
 input, #phone-form-control {
     text-align: center;
     height: 40px;
-    font-size: calc(14px + 0.75vw);
+    font-size: calc(14px + 0.75vw) !important;
 }
 
 input, .react-tel-input .form-control {
